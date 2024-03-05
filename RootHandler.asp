@@ -15,8 +15,7 @@
         if(!queries){
             // parameter not exists empty
 
-            res.Status = 400
-            throw new Error("Missing query")
+            throw new HttpError("Missing query", 400)
         } else {
                 var resp = {
                     parsedQueries: queries,

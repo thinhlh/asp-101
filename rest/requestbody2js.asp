@@ -1,4 +1,5 @@
 <!-- #include virtual="\utils\json.asp" -->
+<!-- #include file="HttpError.asp" -->
 <%
     var Message = {
         EMPTY_BODY: "Body is empty"
@@ -10,8 +11,7 @@
 
         if (lngBytesCount <= 0) {
             // TODO need to find a way to use throw custom error object here
-            Response.Status = 400
-            throw new Error(Message.EMPTY_BODY)
+            throw new HttpError(Message.EMPTY_BODY,400)
         }
         var bytes = req.BinaryRead(lngBytesCount)
 

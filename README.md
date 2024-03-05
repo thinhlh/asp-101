@@ -7,7 +7,7 @@
 > You can use either VBScript by default or use Javascript
 
 ## How to use
-1. Specify Scripting Lang
+1. Specify Scripting Lang. This must be specified before every route
     ```ASP
     <%@ Language= "Javascript" %>
     ```
@@ -33,12 +33,21 @@
     - Parsing Body, Query
 
     ```ASP
+    <!-- #include virtual="\rest\rest.asp" -->
     var handler = function (req,res) {
-        var responseObj = {
-            content: "Rest API server"
-        }
+        var queries = BindQueryToObject(req)
 
-        return responseObj
+        if(!queries){
+            // queries not exists or empty
+
+            throw new HttpError("Missing query", 400)
+        } else {
+            var responseObj = {
+                content: "Rest API server"
+            }
+
+            return responseObj
+        }
     }
     RestWrapper(Request,Response, handler)
     ```
