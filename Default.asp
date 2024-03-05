@@ -1,2 +1,12 @@
 <%@ Language= "Javascript" %>
-<h1>Rest API Server</h1>
+<!-- #include virtual="\rest\rest.asp" -->
+<%
+    var handler = function (req,res) {
+        var responseObj = {
+            content: "Rest API server"
+        }
+
+        return responseObj
+    }
+    RestWrapper(Request,Response, handler)
+%>

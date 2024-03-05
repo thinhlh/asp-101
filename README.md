@@ -1,7 +1,7 @@
 # Clasic ASP 101
 
 # Assumption
-- Basically, ASP is just like HTML but with embedded some scripts using <%>, just like we do with <script/> in HTML
+- Basically, Classic ASP is just like a SSR technology, which allows us to embed some server scripts using <%>, just like we do with <script/> in HTML & NextJS
 
 ## Programming language
 > You can use either VBScript by default or use Javascript
@@ -14,18 +14,33 @@
 2. Import other .asp files
     ```ASP
     <-- #include file="relative\filename.asp" -->
+    <-- #include virtual="\absolute\filename.asp" -->
     ```
-2. Parsing JSON body
+3. Parsing JSON body
     ```ASP
     <!-- #include file="utils\json.asp" -->
     <%
-        var body = BindJSONToObject(Request)
+        var body = BindJSONBodyToObject(Request)
     %>
     ```
-4. Return JSON body
+4. Parsing QueryString to JS Object
     ```ASP
-    <!-- #include file="utils\json.asp" -->
-    Response.Write(JSON.stringify(resp))
+    var queries = BindQueryToObject(req)
+    ```
+5. RestWrapper - [Sample Router](./RootHandler.asp)
+    - Default Error handling
+    - Auto JSON Serialization/Deserialization
+    - Parsing Body, Query
+
+    ```ASP
+    var handler = function (req,res) {
+        var responseObj = {
+            content: "Rest API server"
+        }
+
+        return responseObj
+    }
+    RestWrapper(Request,Response, handler)
     ```
 
 ## References

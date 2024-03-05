@@ -1,34 +1,35 @@
 <%@ Language= "Javascript" %>
-<!-- #include file="utils\json.asp" -->
+
+<!-- #include virtual="\rest\rest.asp" -->
+
 <%
+    var handler = function (req,res) {
+        var body = BindJSONBodyToObject(req)
 
-    var body = BindJSONToObject(Request)
+        var name = body.name
+        var age = body.age
+        var activities = body.activities
+        var books = body.books
+        var queries = BindQueryToObject(req)
 
-    var name = body.name
-    var age = body.age
-    var activities = body.activities
-    var books = body.books
-    var query = Request.QueryString("query").item
+        if(!queries){
+            // parameter not exists empty
 
-    if(!query){
-        // parameter exists and non-empty
-        Response.Status = 400
-        var err = {
-            message: "Missing query"
+            res.Status = 400
+            throw new Error("Missing query")
+        } else {
+                var resp = {
+                    parsedQueries: queries,
+                    message: "Hello " + name +", you gonna turn " + (age+1) + " next year!",
+                    activities: activities,
+                    books: books,
+                    rawQuery: req.QueryString().item
+                }
+
+                res.Status = 200
+                return resp
+            }
         }
-        Response.Write(JSON.stringify(err))
-        Response.End()
-    } else {
-        var resp = {
-            query: query.item,
-            message: "Hello " + name +", you gonna turn " + (age+1) + " next year!",
-            activities: activities,
-            books: books
-        }
 
-        Response.Status = 202
-        Response.Write(JSON.stringify(resp))
-        Response.End()
-        }
-    
+    RestWrapper(Request,Response, handler)
 %>
