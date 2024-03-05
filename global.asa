@@ -1,0 +1,18 @@
+<script language="JScript" runat="server">
+
+    function Application_OnStart() {
+        Application.Contents("DB_Connection") = ""
+    }
+
+    function Application_OnEnd(){
+
+    }
+
+    function Session_OnStart(){
+
+    }
+
+    function Session_OnEnd(){
+
+    }
+</script>

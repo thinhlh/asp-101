@@ -18,11 +18,11 @@
             throw new HttpError("Missing query", 400)
         } else {
                 var resp = {
+                    rawQuery: req.QueryString().item,
                     parsedQueries: queries,
                     message: "Hello " + name +", you gonna turn " + (age+1) + " next year!",
                     activities: activities,
-                    books: books,
-                    rawQuery: req.QueryString().item
+                    books: books
                 }
 
                 res.Status = 200
