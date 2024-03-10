@@ -1,4 +1,4 @@
-<!-- #include virtual="\utils\rest\js\BindRequestBody.asp" -->
+<!-- #include virtual="\utils\rest\Rest.asp" -->
 <%
 
     Class RequestModelClass
@@ -41,11 +41,10 @@
     End Class
 
 
-    Dim body
-    Set body = BindRequestBody(Request)
+    Dim queries: Set queries = BindRequestQuery(Request)
 
-    Dim result
-    Set result = New RequestModelClass
+    Dim body: Set body = BindRequestBody(Request)
+    Dim result: Set result = New RequestModelClass
 
     result.MapFromJSON(body)
 
