@@ -60,8 +60,4 @@
 ## References
 - [JSON2JS - Customized](https://gist.github.com/atheken/654510)
 - [Body2JS](https://stackoverflow.com/a/15818268/12532459)
-<<<<<<< HEAD
 - [ASPJSON](https://www.aspjson.com/) - Used in case we want to read/write json using VBScript
-=======
-- [ASPJSON](https://www.aspjson.com/) - Used in case we want to read/write json using VBScript
->>>>>>> 53636fa7ad0c5c3812b8fef77d288c4cfb190c27
