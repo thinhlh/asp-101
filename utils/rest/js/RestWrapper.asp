@@ -1,6 +1,6 @@
-<!-- #include virtual="\utils\json.asp" -->
+<!-- #include virtual="\utils\json\js\json2js.asp" -->
 
-<%
+<script language="JScript" runat="server">
     function RestWrapper(req, res, handler) {
         try {
             var response = handler(req, res)
@@ -17,4 +17,4 @@
             res.End()
         }
     }
-%>
+</script>

@@ -1,5 +1,5 @@
-<!-- #include virtual="\utils\json\json.asp" -->
-<!-- #include virtual="\utils\rest\HttpError.asp" -->
+<!-- #include virtual="\utils\json\js\json2js.asp" -->
+<!-- #include virtual="\utils\rest\js\HttpError.asp" -->
 
 <script language="JScript" runat="server">
     var Message = {
